@@ -1,73 +1,55 @@
-Una vez visto como  crear y añadir elementos al DOM, vamos a ver una serie de propiedades que podemos utilizar en nuestros desarrollos
+Toca repasar eventos, como ya sabéis, los evento nos van a permitir que dada una acción, lancemos las funciones que les indiquemos. Por ejemplo, tenemos eventos de:
 
+- **RATÓN**: Hacer click [click], pasar el ratón sobre un elemento [mouseover], sacar el ratón de un elemento [mouseout] …
+- **TECLADO**: Cuando pulsamos por ejemplo una tecla [keypress]…
+- **ELEMENTOS**: Cuando quitamos el foco [blur], lo ponemos [focus], cambiamos el contenido de un output [change]…
+- **FORMULARIOS**: Cuando pulsamos el [submit] o el [reset]…
+- **VENTANA:** Un cambio de tamaño [resize] o un scroll [scroll]
 
-### **element.textContent**
+**onclick**
 
-Nos permite introducir texto en nuestras etiquetas
+La forma más fácil de trabajar con el elemento CLICK es mediante el atributo **onclick** en HTML. 
 
+Lo podemos usar en cualquier etiqueta, no hace falta que sea un botón.
 
-```jsx
-elementoHijo.textContent = 'Esto es un H1';
+```html
+<body>
+	<p>Si pulsas en el botón saldrá un mensaje por consola</p> 
+	<button onclick="mensajeConsola()">Haz click</button>
+</body>
 ```
 
-
-### **element.setAtributte()**
-
-Que nos permite por ejemplo, incluir la url en una imagen:
-
-
 ```jsx
-element.setAttribute('src', url);
+function mensajeConsola () {
+	console.log('Aquí está el mensaje por consola');
+}
 ```
 
+**eventListener**
 
-### **element.style**
+Otra manera de tratar con eventos en JS sería mediante el uso de eventListeners, escuchadores de eventos. Lo que hacemos con ello es dejar preparada una función que salta cuando se produzca ese evento. Por ejemplo:
 
-Nor permite cambiar el estilo:
-
-
-```jsx
-element.style.display = 'none';
+```html
+<body>
+	<p>Si pulsas en el botón saldrá un mensaje por consola</p> 
+	<button id="btn">Haz click</button>
+</body>
 ```
- 
-
-### **element.classList.add() / element.classList.remove() / element.classList.toogle() / element.classList.contains() /**
-
 
 ```jsx
-//element.classList.add()
-elementoHijo.classList.add('bold-text', 'red-text');
+function mensajeConsola () {
+	console.log('Aquí está el mensaje por consola');
+}
 
-//element.classList.remove()
-elementoHijo.classList.remove('bold-text');
-
-//element.classList.add()
-elementoHijo.classList.toogle('visible');
-
-//element.classList.contains()
-elementoHijo.classList.contains('visible');
+document.getElementById("btn").addEventListener("click", mensajeConsola);
 ```
-  
 
-Los elementos tienen un montón de propiedades añadidas y algunas son muy interesantes
+A nivel de buenas prácticas, deberíamos usar estos eventos en lugar de el onclick y así mantener
 
+toda la lógica en javascript.
+
+En caso de que quisiésemos pasar argumentos mediante la función dentro del addEventListener debemos usar una función anónima para ello:
 
 ```jsx
-// attributes: Nos devuelve el objeto con los atributos que posee un nodo
-elemento.attributes
-
-// className: Para conocer o cambiar el nombre de la clase
-elemento.className
-
-// classList: Listado de clases
-elemento.classList
-
-// id: Para conocer el id
-elemento.id
-
-// parentNode, childNodes, firstChild, lastChild, previousSibling, nextSibling: Para conocer elementos padres e hijos
-elemento.childNodes...
-
-// tagName: Devuelve la etiqueta HTML
-elemento.tagName
+document.getElementById("btn").addEventListener("click", funcion () { mensajeConsola ('Hola') });
 ```
