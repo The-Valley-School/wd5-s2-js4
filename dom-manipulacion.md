@@ -31,7 +31,7 @@ element.style.display = 'none';
 ```
  
 
-### **element.classList.add() / element.classList.remove() / element.classList.toogle() / element.classList.contains() /**
+### **element.classList.add() / element.classList.remove() / element.classList.toogle() / element.classList.contains()**
 
 
 ```jsx
